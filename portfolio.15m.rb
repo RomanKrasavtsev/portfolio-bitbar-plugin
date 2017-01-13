@@ -78,4 +78,4 @@ end
 total_percent = (total_current_price * 100 / total_purchase_price) - 100
 
 puts "---"
-puts "Total: $#{total_current_price} [#{total_percent.round(2)}%, $#{(total_current_price - total_purchase_price).round(2)}]"
+puts "Total: $#{total_current_price.round(2)} [#{total_percent.round(2)}%, $#{(total_current_price - total_purchase_price).round(2)}]"
