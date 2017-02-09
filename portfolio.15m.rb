@@ -19,14 +19,14 @@ portfolio = [
     name: "Microsoft",
     url: "https://www.bloomberg.com/quote/MSFT:US",
     purchases: [
-      { date: "13.01.2017", price: 63.62, amount: 2 } # 127.25 USD
+      { date: "13.01.2017", price: 127.25, amount: 2 } # 63.62 USD
     ]
   },
   {
     name: "Tinkoff",
     url: "https://www.bloomberg.com/quote/TCS:LI",
     purchases: [
-      { date: "13.01.2017", price: 11.02, amount: 6 } # 66.17 USD
+      { date: "13.01.2017", price: 66.17, amount: 6 } # 11.02 USD
     ]
   },
   {
@@ -34,6 +34,20 @@ portfolio = [
     url: "https://www.bloomberg.com/quote/RACE:US",
     purchases: [
       { date: "13.01.2017", price: 61.94, amount: 1 } # 61.94 USD
+    ]
+  },
+  {
+    name: "Facebook",
+    url: "https://www.bloomberg.com/quote/FB:US",
+    purchases: [
+      { date: "09.02.2017", price: 136.05, amount: 1 }
+    ]
+  },
+  {
+    name: "Apple",
+    url: "https://www.bloomberg.com/quote/AAPL:US",
+    purchases: [
+      { date: "09.02.2017", price: 133.38, amount: 1 }
     ]
   }
 ]
@@ -65,7 +79,7 @@ portfolio.each do |stock|
   purchase_price = 0
   current_price = 0
   stock[:purchases].each do |purchase|
-    purchase_price += purchase[:price] * purchase[:amount]
+    purchase_price += purchase[:price]
     current_price += price * purchase[:amount]
   end
   percent = (current_price * 100 / purchase_price) - 100
