@@ -40,14 +40,21 @@ portfolio = [
     name: "Facebook",
     url: "https://www.bloomberg.com/quote/FB:US",
     purchases: [
-      { date: "09.02.2017", price: 136.05, amount: 1 }
+      { date: "09.02.2017", price: 136.05, amount: 1 } # 136.05 USD
     ]
   },
   {
     name: "Apple",
     url: "https://www.bloomberg.com/quote/AAPL:US",
     purchases: [
-      { date: "09.02.2017", price: 133.38, amount: 1 }
+      { date: "09.02.2017", price: 133.38, amount: 1 } # 133.38 USD
+    ]
+  },
+  {
+    name: "Netflix",
+    url: "https://www.bloomberg.com/quote/NFLX:US",
+    purchases: [
+      { data: "06.03.2017", price: 283.95, amount: 2 } # 141.97 USD
     ]
   }
 ]
