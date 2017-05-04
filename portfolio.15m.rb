@@ -33,7 +33,8 @@ portfolio = [
     name: "Ferrari",
     url: "https://www.bloomberg.com/quote/RACE:US",
     purchases: [
-      { date: "13.01.2017", price: 61.94, amount: 1 } # 61.94 USD
+      { date: "13.01.2017", price: 61.94, amount: 1 }, # 61.94 USD
+      { date: "02.05.2017", price: 229.83, amount: 3 } # 76.61 USD
     ]
   },
   {
@@ -54,7 +55,7 @@ portfolio = [
     name: "Netflix",
     url: "https://www.bloomberg.com/quote/NFLX:US",
     purchases: [
-      { data: "06.03.2017", price: 283.95, amount: 2 } # 141.97 USD
+      { date: "06.03.2017", price: 283.95, amount: 2 } # 141.97 USD
     ]
   }
 ]
@@ -83,20 +84,23 @@ portfolio.each do |stock|
     .gsub(/<[^>]*>/, "")
     .to_f
 
+  puts "#{stock[:name]} [$#{price}] | color=black"
+
   purchase_price = 0
   current_price = 0
   stock[:purchases].each do |purchase|
     purchase_price += purchase[:price]
     current_price += price * purchase[:amount]
+    puts "#{purchase[:date]}: $#{purchase[:price]} [#{(price * purchase[:amount] * 100 / purchase[:price] - 100).round(2)}%, $#{(price * purchase[:amount] - purchase[:price]).round(2)}]"
   end
   percent = (current_price * 100 / purchase_price) - 100
   total_purchase_price += purchase_price
   total_current_price += current_price
 
-  puts "#{stock[:name]}: $#{current_price.round(2)} [#{(percent).round(2)}%, $#{(current_price - purchase_price).round(2)}]"
+  puts "= $#{current_price.round(2)} [#{(percent).round(2)}%, $#{(current_price - purchase_price).round(2)}]" if stock[:purchases].size > 1
 end
 
 total_percent = (total_current_price * 100 / total_purchase_price) - 100
 
 puts "---"
-puts "Total: $#{total_current_price.round(2)} [#{total_percent.round(2)}%, $#{(total_current_price - total_purchase_price).round(2)}]"
+puts "= $#{total_current_price.round(2)} [#{total_percent.round(2)}%, $#{(total_current_price - total_purchase_price).round(2)}] | color=black length=28"
