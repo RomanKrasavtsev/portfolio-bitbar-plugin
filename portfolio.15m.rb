@@ -78,10 +78,9 @@ total_purchase_price = 0
 total_current_price = 0
 portfolio.each do |stock|
   price = Nokogiri::HTML(open(stock[:url], 'User-Agent' => user_agent), nil, "UTF-8")
-    .css(".container")
-    .css(".price")
+    .xpath("//span[starts-with(@class, 'priceText__')]")
+    .children
     .to_s
-    .gsub(/<[^>]*>/, "")
     .to_f
 
   puts "#{stock[:name]} [$#{price}] | color=black"
